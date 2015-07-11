@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the workspaceApp
  */
-angular.module('workspaceApp')
+angular.module('nannyApp')
   .controller('MainCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

@@ -9,28 +9,27 @@
  * Main module of the application.
  */
 angular
-  .module('workspaceApp', [
+  .module('nannyApp', [
     'ngAnimate',
     'ngCookies',
     'ngMessages',
     'ngResource',
-    'ngRoute',
+    'ui.router',
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(function ($stateProvider, $urlRouterProvider) {
+    // $urlRouterProvider.otherwise("/");
+
+    $stateProvider
+    .state('main', {
+      url: "/",
+      templateUrl: "views/main.html",
+      controller: 'MainCtrl'
+    })
+    .state('state1', {
+      url: "/state1",
+      templateUrl: "views/about.html",
+      controller: 'AboutCtrl'
+    });
   });
