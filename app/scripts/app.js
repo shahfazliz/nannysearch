@@ -16,9 +16,11 @@ angular
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'uiGmapgoogle-maps',
+    'geolocation'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider,uiGmapGoogleMapApiProvider) {
     // $urlRouterProvider.otherwise("/");
 
     $stateProvider
@@ -31,5 +33,11 @@ angular
       url: "/state1",
       templateUrl: "views/about.html",
       controller: 'AboutCtrl'
+    });
+
+    uiGmapGoogleMapApiProvider.configure({
+        //    key: 'your api key',
+        v: '3.17',
+        libraries: 'weather,geometry,visualization'
     });
   });
