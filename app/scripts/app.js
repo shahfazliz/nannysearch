@@ -27,7 +27,15 @@ angular
     .state('main', {
       url: "/",
       templateUrl: "views/main.html",
-      controller: 'MainCtrl'
+      controller: 'MainCtrl',
+      // using resolve to get the current position before the main page is load, then use the coordinates to show according to user vicinity.
+      // need to structure the router using parents,child nested more properly later.
+      resolve: {
+        getCurrentLocation: function(geolocation){
+          return geolocation.getLocation();
+        }
+      }
+
     })
     .state('state1', {
       url: "/state1",
