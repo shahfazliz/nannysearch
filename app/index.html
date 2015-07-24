@@ -18,6 +18,10 @@
             padding:0;
           }
           .angular-google-map-container {
+            min-height: 1px;
+            height: -moz-cal(100% - 125px);
+            height: -webkit-calc(100% - 125px);
+            height: -o-calc(100% - 125px);
             height: calc(100vh - 125px);
           }
     </style>
@@ -94,10 +98,10 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
-</body>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <!-- endbuild -->
+  </body>
 </html>
