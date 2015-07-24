@@ -1,1 +1,53 @@
-<p>This suppose be Registering Form</p>
+<form novalidate class="simple-form">
+    Name: <input type="text" ng-model="registerNanny.form.name" /><br />
+    E-mail: <input type="email" ng-model="registerNanny.form.email" /><br />
+    Age: <input type="email" ng-model="registerNanny.form.age" /><br />
+    Gender: 
+    <select ng-model="registerNanny.form.gender">
+  		<option value="male">Male</option>
+  		<option value="female" selected>female</option>
+	</select><br/>
+    Race: 
+    <select ng-model="registerNanny.form.race">
+  		<option value="malay" selected>Malay</option>
+  		<option value="chinese">Chinese</option>
+  		<option value="Indian">Indian</option>
+  		<option value="Others">Others</option>
+	</select><br/>
+	Address: 
+	<input type="address" ng-model="registerNanny.form.address" /><br/>
+	Phone Number (will be use for submission verification):
+	<input type="phone" ng-model="registerNanny.form.phone" /><br/>
+	Age group Preference:
+	<select ng-model="registerNanny.form.agePreference">
+  		<option value="1">Below 3 years old</option>
+  		<option value="2">Above 3 years old</option>
+	</select><br/>
+	Gender Preference:
+	<select ng-model="registerNanny.form.genderPreference">
+  		<option value="boy" selected>Boy</option>
+  		<option value="girl">Girl</option>
+	</select><br/>
+	Language Spoken:
+	<labeL>Malay<input type="checkbox" ng-model="registerNanny.form.language['malay']" ><br/></label>
+    <labeL>Chinese<input type="checkbox" ng-model="registerNanny.form.language['chinese']" ><br/></label>
+    <labeL>Indian<input type="checkbox" ng-model="registerNanny.form.language['indian']" ><br/></label>
+    <labeL>Others<input type="checkbox" ng-model="registerNanny.form.language['others']" ><br/></label><br />
+    Number of babies currently in care:
+	<select ng-model="registerNanny.form.currentlyCare">
+  		<option value="1" selected>1</option>
+  		<option value="2">2</option>
+  		<option value="3">3</option>
+  		<option value="4">4</option>
+  		<option value="5">5</option>
+	</select><br/>
+	Price: <input type="price" ng-model="registerNanny.form.price" /><br /><br/>
+	Experience:<br/> <textarea ng-model="registerNanny.form.experience"></textarea><br />
+	Describe Yourself:<br/> <textarea ng-model="registerNanny.form.description"></textarea><br />	
+
+
+
+
+
+    <input type="submit" ng-click="registerNanny.submit()" value="Save" />
+  </form>

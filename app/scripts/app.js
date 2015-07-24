@@ -40,7 +40,8 @@ angular
     .state('state1', {
       url: "/state1",
       templateUrl: "views/about.html",
-      controller: 'AboutCtrl'
+      controller: 'RegisterNannyCtrl',
+      controllerAs: 'registerNanny'
     });
 
     uiGmapGoogleMapApiProvider.configure({
