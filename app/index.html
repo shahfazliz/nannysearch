@@ -13,12 +13,16 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <style>
-          .angular-google-map-container {
-            height: 800px;
+          .fill{
+            margin:0;
+            padding:0;
           }
-          .fill {
-            height: 100%;
-            min-height: 100%;
+          .angular-google-map-container {
+            min-height: 1px;
+            height: -moz-cal(100% - 125px);
+            height: -webkit-calc(100% - 125px);
+            height: -o-calc(100% - 125px);
+            height: calc(100vh - 125px);
           }
     </style>
     <!-- endbuild -->
@@ -71,7 +75,6 @@
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
        }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
@@ -95,10 +98,10 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
-</body>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <!-- endbuild -->
+  </body>
 </html>
