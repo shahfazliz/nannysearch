@@ -12,4 +12,8 @@ angular.module('nannyApp')
      var userSignUpCtrl = this;
 
      userSignUpCtrl.form = {};
+
+     userSignUpCtrl.submit = function(){
+        console.log(userSignUpCtrl.form);
+     }
   });
