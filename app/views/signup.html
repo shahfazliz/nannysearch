@@ -1,8 +1,12 @@
 <h3>User Signup</h3>
 <form novalidate class="simple-form">
 	E-mail: <input type="email" ng-model="userSignUp.form.email" /><br />
-    Password: <input type="password" ng-model="userSignUp.form.password"/><br />
-    Re-type Password: <input type="password" ng-model="userSignUp.form.password2" /><br />
+    Password: <input type={{userSignUp.typeChange}} ng-model="userSignUp.form.password"/><label>Show Password:
+    	<input type="checkbox" ng-model="userSignUp.showPass1" ng-change="userSignUp.clickChange('showPass1')">
+  	</label><br/><br />
+    Re-type Password: <input type={{userSignUp.typeChange2}} ng-model="userSignUp.form.password2" /><label>Show Password:
+    	<input type="checkbox" ng-model="userSignUp.showPass2" ng-change="userSignUp.clickChange('showPass2')">
+  	</label><br />
     Mobile Number: <input type="text" ng-model="userSignUp.form.mobile" /><br />
     <input type="submit" ng-click="userSignUp.submit()" value="Save" />
 
