@@ -37,11 +37,18 @@ angular
       }
 
     })
+    .state('signup',{
+       url: "/signup",
+       templateUrl:"views/signup.html",
+       controller: "userSignUpCtrl",
+       controllerAs: "userSignUp"
+
+    })
     .state('state1', {
       url: "/state1",
       templateUrl: "views/about.html",
-      controller: 'RegisterNannyCtrl',
-      controllerAs: 'registerNanny'
+      controller: "RegisterNannyCtrl",
+      controllerAs: "registerNanny"
     });
 
     uiGmapGoogleMapApiProvider.configure({
