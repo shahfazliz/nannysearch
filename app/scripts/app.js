@@ -45,6 +45,14 @@ angular
        controllerAs: "userSignUp"
 
     })
+    .state('activate',{
+       url: "/activate/:id/:email",
+       templateUrl:"views/activate.html",
+       controller: "activationUserCtrl",
+       controllerAs: "activationUser",
+       params: {'number':null}
+
+    })
     .state('state1', {
       url: "/state1",
       templateUrl: "views/about.html",

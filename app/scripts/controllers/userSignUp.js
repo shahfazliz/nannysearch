@@ -8,7 +8,7 @@
  * Controller of the workspaceApp
  */
 angular.module('nannyApp')
-  .controller('userSignUpCtrl', ['$firebaseAuth', function ($firebaseAuth) {
+  .controller('userSignUpCtrl', ['$firebaseAuth', '$state', function ($firebaseAuth,$state) {
     //form needed validation, needed to add validation
      var userSignUpCtrl = this;
      var ref = new Firebase("https://blazing-inferno-1310.firebaseio.com");
@@ -21,16 +21,18 @@ angular.module('nannyApp')
      userSignUpCtrl.submit = function(){
         console.log(userSignUpCtrl.form);
         if(userSignUpCtrl.form.password === userSignUpCtrl.form.password2){
-            ref.createUser({
-                  email    : userSignUpCtrl.form.email,
-                  password : userSignUpCtrl.form.password
-                }, function(error, userData) {
-                  if (error) {
-                    console.log("Error creating user:", error);
-                  } else {
-                    console.log("Successfully created user account with uid:", userData.uid);
-                  }
-                });
+            // ref.createUser({
+            //       email    : userSignUpCtrl.form.email,
+            //       password : userSignUpCtrl.form.password
+            //     }, function(error, userData) {
+            //       if (error) {
+            //         console.log("Error creating user:", error);
+            //       } else {
+            //         console.log("Successfully created user account with uid:", userData.uid);
+            //       }
+            //     });
+            $state.go('activate',{'id':'1','email':userSignUpCtrl.form.email,'number':userSignUpCtrl.form.mobile});
+
         }else{
             alert('Password not the same');
         }
