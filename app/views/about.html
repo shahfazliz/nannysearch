@@ -1,19 +1,19 @@
 <div class="container-fluid">
 	<form novalidate class="simple-form" name='FormPersonalInfo'>
 		<div class="row">
-			<div class="col-sm-1"><label form='name' form='FormPersonalInfo'>Name</label></div>
+			<div class="col-sm-2"><label form='name' form='FormPersonalInfo'>Name</label></div>
 			<div class="col-sm-4"><input type="text" form="FormPersonalInfo" ng-model="registerNanny.form.name" /></div>
 		</div>
 		<div class="row">
-			<div class="col-sm-1"><label for="email" form="FormPersonalInfo">E-mail</label></div>
+			<div class="col-sm-2"><label for="email" form="FormPersonalInfo">E-mail</label></div>
 			<div class="col-sm-4"><input type="email" form="FormPersonalInfo" ng-model="registerNanny.form.email" /></div>
 		</div>
 		<div class="row">
-			<div class="col-sm-1"><label for="age" form="FormPersonalInfo">Age</label></div>
+			<div class="col-sm-2"><label for="age" form="FormPersonalInfo">Age</label></div>
 			<div class="col-sm-4"><input type="number" min='0' form="FormPersonalInfo" ng-model="registerNanny.form.age" /></div>
 		</div>
 		<div class="row">
-			<div class="col-sm-1"><label for="gender" form="FormPersonalInfo">Gender</label></div>
+			<div class="col-sm-2"><label for="gender" form="FormPersonalInfo">Gender</label></div>
 			<div class="col-sm-4">
 				<select form="FormPersonalInfo" ng-model="registerNanny.form.gender">
 			  		<option value="female" selected>Female</option>
@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-1"><label for="race" form="FormPersonalInfo">Race</label></div>
+			<div class="col-sm-2"><label for="race" form="FormPersonalInfo">Race</label></div>
 			<div class="col-sm-4">
 				<select form="FormPersonalInfo" ng-model="registerNanny.form.race">
 			  		<option value="malay" selected>Malay</option>
@@ -33,47 +33,63 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-1"><label for="address" form="FormPersonalInfo">Address</label></div>
+			<div class="col-sm-2"><label for="address" form="FormPersonalInfo">Address</label></div>
 			<div class="col-sm-4"><textarea rows='4' form="FormPersonalInfo" ng-model="registerNanny.form.address" /></div>
 		</div>
-    
-    <br />
-    <br />
-    <br />
-    Phone Number (will be use for submission verification):
-			<input type="phone" ng-model="registerNanny.form.phone" /><br/>
-	Age group Preference:
-		<input type="range" value="7,9" min="0" max="10" name="range" multiple><br />
-		<!--<select ng-model="registerNanny.form.agePreference">
-	  		<option value="1">Below 3 years old</option>
-	  		<option value="2">Above 3 years old</option>
-		</select><br/>-->
-	Gender Preference:
-	<select ng-model="registerNanny.form.genderPreference">
-  		<option value="boy" selected>Boy</option>
-  		<option value="girl">Girl</option>
-	</select><br/>
-	Language Spoken:
-	<labeL>Malay<input type="checkbox" ng-model="registerNanny.form.language['malay']" ><br/></label>
-    <labeL>Chinese<input type="checkbox" ng-model="registerNanny.form.language['chinese']" ><br/></label>
-    <labeL>Indian<input type="checkbox" ng-model="registerNanny.form.language['indian']" ><br/></label>
-    <labeL>Others<input type="checkbox" ng-model="registerNanny.form.language['others']" ><br/></label><br />
-    Number of babies currently in care:
-	<select ng-model="registerNanny.form.currentlyCare">
-  		<option value="1" selected>1</option>
-  		<option value="2">2</option>
-  		<option value="3">3</option>
-  		<option value="4">4</option>
-  		<option value="5">5</option>
-	</select><br/>
-	Price: <input type="price" ng-model="registerNanny.form.price" /><br /><br/>
-	Experience:<br/> <textarea ng-model="registerNanny.form.experience"></textarea><br />
-	Describe Yourself:<br/> <textarea ng-model="registerNanny.form.description"></textarea><br />	
-
-
-
-
-
-    <input type="submit" ng-click="registerNanny.submit()" value="Save" />
-  </form>
+		<div class="row">
+			<div class="col-sm-2"><label for="phone" form="FormPersonalInfo">Phone Number</label></div>
+			<div class="col-sm-4"><input type="phone" ng-model="registerNanny.form.phone" /></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">(will be use for submission verification)</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="agePreference" form="FormPersonalInfo">Age group Preference</label></div>
+			<div class="col-sm-4">
+				<input type="range" value="7,9" min="0" max="10" name="range" multiple>
+				<!--<select ng-model="registerNanny.form.agePreference">
+			  		<option value="1">Below 3 years old</option>
+			  		<option value="2">Above 3 years old</option>
+				</select><br/>-->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="genderPreference" form="FormPersonalInfo">Gender Preference</label></div>
+			<div class="col-sm-4">
+				<select ng-model="registerNanny.form.genderPreference">
+			  		<option value="boy" selected>Boys Only</option>
+			  		<option value="girl">Girls Only</option>
+			  		<option value="both">Boys/Girls</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="spokenLanguage" form="FormPersonalInfo">Spoken Language</label></div>
+			<div class="col-sm-4">
+				<labeL>Malay<input type="checkbox" ng-model="registerNanny.form.language['malay']" ><br/></label>
+			    <labeL>Chinese<input type="checkbox" ng-model="registerNanny.form.language['chinese']" ><br/></label>
+			    <labeL>Indian<input type="checkbox" ng-model="registerNanny.form.language['indian']" ><br/></label>
+			    <labeL>Others<input type="checkbox" ng-model="registerNanny.form.language['others']" ><br/></label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="numberOfBabiesInCare" form="FormPersonalInfo">Number of babies/kids currently in care</label></div>
+			<div class="col-sm-4"><input type="number" min='0' form="FormPersonalInfo" ng-model="registerNanny.form.currentlyCare" /></div>
+		</div>
+    	<div class="row">
+    		<div class="col-sm-2"><label for="" form="FormPersonalInfo">Price</label></div>
+    		<div class="col-sm-4">RM <input type="price" ng-model="registerNanny.form.price" /></div>
+    	</div>
+    	<div class="row">
+    		<div class="col-sm-2"><label for="" form="FormPersonalInfo">Experience</label></div>
+    		<div class="col-sm-4"><textarea ng-model="registerNanny.form.experience"></textarea></div>
+    	</div>
+    	<div class="row">
+    		<div class="col-sm-2"><label for="describeYourself" form="FormPersonalInfo">Describe Yourself</label></div>
+    		<div class="col-sm-4"><textarea ng-model="registerNanny.form.description"></textarea></div>
+    	</div>
+    	<div class="row">
+    		<div class="col-sm-6"><input type="submit" ng-click="registerNanny.submit()" value="Save" /></div>
+    	</div>
+    </form>
 </div>
