@@ -1,28 +1,53 @@
-<form novalidate class="simple-form">
-    Name: <input type="text" ng-model="registerNanny.form.name" /><br />
-    E-mail: <input type="email" ng-model="registerNanny.form.email" /><br />
-    Age: <input type="email" ng-model="registerNanny.form.age" /><br />
-    Gender: 
-    <select ng-model="registerNanny.form.gender">
-  		<option value="male">Male</option>
-  		<option value="female" selected>female</option>
-	</select><br/>
-    Race: 
-    <select ng-model="registerNanny.form.race">
-  		<option value="malay" selected>Malay</option>
-  		<option value="chinese">Chinese</option>
-  		<option value="Indian">Indian</option>
-  		<option value="Others">Others</option>
-	</select><br/>
-	Address: 
-	<input type="address" ng-model="registerNanny.form.address" /><br/>
-	Phone Number (will be use for submission verification):
-	<input type="phone" ng-model="registerNanny.form.phone" /><br/>
+<div class="container-fluid">
+	<form novalidate class="simple-form" name='FormPersonalInfo'>
+		<div class="row">
+			<div class="col-sm-1"><label form='name' form='FormPersonalInfo'>Name</label></div>
+			<div class="col-sm-4"><input type="text" form="FormPersonalInfo" ng-model="registerNanny.form.name" /></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-1"><label for="email" form="FormPersonalInfo">E-mail</label></div>
+			<div class="col-sm-4"><input type="email" form="FormPersonalInfo" ng-model="registerNanny.form.email" /></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-1"><label for="age" form="FormPersonalInfo">Age</label></div>
+			<div class="col-sm-4"><input type="number" min='0' form="FormPersonalInfo" ng-model="registerNanny.form.age" /></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-1"><label for="gender" form="FormPersonalInfo">Gender</label></div>
+			<div class="col-sm-4">
+				<select form="FormPersonalInfo" ng-model="registerNanny.form.gender">
+			  		<option value="female" selected>Female</option>
+			  		<option value="male">Male</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-1"><label for="race" form="FormPersonalInfo">Race</label></div>
+			<div class="col-sm-4">
+				<select form="FormPersonalInfo" ng-model="registerNanny.form.race">
+			  		<option value="malay" selected>Malay</option>
+			  		<option value="chinese">Chinese</option>
+			  		<option value="Indian">Indian</option>
+			  		<option value="Others">Others</option>
+				</select><br/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-1"><label for="address" form="FormPersonalInfo">Address</label></div>
+			<div class="col-sm-4"><textarea rows='4' form="FormPersonalInfo" ng-model="registerNanny.form.address" /></div>
+		</div>
+    
+    <br />
+    <br />
+    <br />
+    Phone Number (will be use for submission verification):
+			<input type="phone" ng-model="registerNanny.form.phone" /><br/>
 	Age group Preference:
-	<select ng-model="registerNanny.form.agePreference">
-  		<option value="1">Below 3 years old</option>
-  		<option value="2">Above 3 years old</option>
-	</select><br/>
+		<input type="range" value="7,9" min="0" max="10" name="range" multiple><br />
+		<!--<select ng-model="registerNanny.form.agePreference">
+	  		<option value="1">Below 3 years old</option>
+	  		<option value="2">Above 3 years old</option>
+		</select><br/>-->
 	Gender Preference:
 	<select ng-model="registerNanny.form.genderPreference">
   		<option value="boy" selected>Boy</option>
@@ -51,3 +76,4 @@
 
     <input type="submit" ng-click="registerNanny.submit()" value="Save" />
   </form>
+</div>
