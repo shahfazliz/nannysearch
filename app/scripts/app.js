@@ -18,7 +18,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'uiGmapgoogle-maps',
-    'geolocation'
+    'geolocation',
+    'firebase'
   ])
   .config(function ($stateProvider, $urlRouterProvider,uiGmapGoogleMapApiProvider) {
     // $urlRouterProvider.otherwise("/");
