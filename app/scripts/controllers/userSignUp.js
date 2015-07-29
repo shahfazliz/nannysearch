@@ -9,6 +9,7 @@
  */
 angular.module('nannyApp')
   .controller('userSignUpCtrl', function () {
+    //form needed validation, needed to add validation
      var userSignUpCtrl = this;
 
      userSignUpCtrl.form = {};
