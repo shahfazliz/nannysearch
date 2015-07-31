@@ -18,6 +18,7 @@ angular.module('nannyApp').factory('userModel',['$http', function($http){
 			        var str = [];
 			        for(var p in obj)
 			        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+			    	console.log('twillio urlencode:',str.join("&"));
 			        return str.join("&");
 			    },
 		        data: {
