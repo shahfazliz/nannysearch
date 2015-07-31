@@ -8,12 +8,13 @@
  * Controller of the workspaceApp
  */
 angular.module('nannyApp')
-  .controller('userSignUpCtrl', ['$firebaseAuth', '$state', function ($firebaseAuth,$state) {
+  .controller('userSignUpCtrl', ['$firebaseAuth', '$state', 'userModel', function ($firebaseAuth,$state,userModel) {
     //form needed validation, needed to add validation
      var userSignUpCtrl = this;
      var ref = new Firebase("https://blazing-inferno-1310.firebaseio.com");
 
      userSignUpCtrl.form = {};
+     // userModel.generateActivationCode();
 
      userSignUpCtrl.typeChange = "password";
      userSignUpCtrl.typeChange2 = "password";
@@ -31,6 +32,7 @@ angular.module('nannyApp')
             //         console.log("Successfully created user account with uid:", userData.uid);
             //       }
             //     });
+            userModel.sendTwillioSms('+60163064256','ACTIVATIONHASHCODE');
             $state.go('activate',{'id':'1','email':userSignUpCtrl.form.email,'number':userSignUpCtrl.form.mobile});
 
         }else{
