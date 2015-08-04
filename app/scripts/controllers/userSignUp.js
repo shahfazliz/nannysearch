@@ -8,10 +8,11 @@
  * Controller of the workspaceApp
  */
 angular.module('nannyApp')
-  .controller('userSignUpCtrl', ['$firebaseAuth', '$state', 'userModel', function ($firebaseAuth,$state,userModel) {
+  .controller('userSignUpCtrl', ['$firebaseAuth', '$firebaseArray', '$state', 'userModel', function ($firebaseAuth,$firebaseArray,$state,userModel) {
     //form needed validation, needed to add validation
      var userSignUpCtrl = this;
      var ref = new Firebase("https://blazing-inferno-1310.firebaseio.com");
+     var usrsDb = new Firebase("https://blazing-inferno-1310.firebaseio.com/users");
 
      userSignUpCtrl.form = {};
      // userModel.generateActivationCode();
@@ -19,22 +20,40 @@ angular.module('nannyApp')
      userSignUpCtrl.typeChange = "password";
      userSignUpCtrl.typeChange2 = "password";
 
+
+     //firebase change to profile object using child rather than $firebaseArray
+     //extract signup into userModel, refactor codes
+     //after register use firebase login to login
+     //after register succesfully, create rootScope global user, for use login and logout or session
+
+
      userSignUpCtrl.submit = function(){
         console.log(userSignUpCtrl.form);
         if(userSignUpCtrl.form.password === userSignUpCtrl.form.password2){
-            // ref.createUser({
-            //       email    : userSignUpCtrl.form.email,
-            //       password : userSignUpCtrl.form.password
-            //     }, function(error, userData) {
-            //       if (error) {
-            //         console.log("Error creating user:", error);
-            //       } else {
-            //         console.log("Successfully created user account with uid:", userData.uid);
-            //       }
-            //     });
-            userModel.sendTwillioSms('+60163064256','ACTIVATIONHASHCODE');
-            $state.go('activate',{'id':'1','email':userSignUpCtrl.form.email,'number':userSignUpCtrl.form.mobile});
-
+            ref.createUser({
+                  email    : userSignUpCtrl.form.email,
+                  password : userSignUpCtrl.form.password
+                }, function(error, userData) {
+                  if (error) {
+                    console.log("Error creating user:", error);
+                  } else {
+                    console.log("Successfully created user account with uid:", userData.uid);
+                    var usrs = $firebaseArray(usrsDb);
+                    usrs.$add({
+                      userId: userData.uid,  
+                      userEmail: userSignUpCtrl.form.email,
+                      userPhone: userSignUpCtrl.form.mobile,
+                      userActive: 0
+                    }).then(function(ref){
+                        userModel.sendTwillioSms(userSignUpCtrl.form.mobile,'ACTIVATIONHASHCODE');
+                        $state.go('activate',{'id':userData.uid,'email':userSignUpCtrl.form.email,'number':userSignUpCtrl.form.mobile});
+                        console.log('success',ref.key());
+                    },function(err){
+                        console.log('error',err);
+                    });
+                    
+                  }
+                });
         }else{
             alert('Password not the same');
         }

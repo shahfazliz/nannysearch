@@ -22,9 +22,9 @@ angular.module('nannyApp').factory('userModel',['$http', function($http){
 			        return str.join("&");
 			    },
 		        data: {
-		            'To':     '+60163064256',
+		            'To':     to,
 		            'From':   '+14155992671',
-		            'Body':   'test'
+		            'Body':   msg
 		        }
 		    })
 		    .success(function(data){
