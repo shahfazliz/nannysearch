@@ -13,6 +13,8 @@
 ### Install only yo and gulp
 Install yeoman dengan gulp sahaja sebab by default dah ada bower dengan grunt-cli
 ```sh
+    $ npm update -g bower           # ni utk jebat, sebab beliau dah ada dah
+    $ npm update -g grunt-cli       # ni utk jebat, sebab beliau dah ada dah
     $ npm install -g yo gulp
 ```
 Kalau tak dak lagi bower ngan grunt-cli
@@ -34,10 +36,11 @@ During installation
 6. Overwrite package.json
 7. Sampai kat "Total Execution Time" dia hang lama.. aku tekan arrow down, and overwrite package.json baru settle
 ```sh
-    $ bower install                 # in case kalau ada dependency tak install lagi
-    $ npm install                   # in case kalau ada dependency tak install lagi
-    $ bower install angular-ui      # install a dependency for your project from Bower
-    $ grunt test                    # test your app
+    $ bower install                     # in case kalau ada dependency tak install lagi
+    $ npm install                       # in case kalau ada dependency tak install lagi
+    $ bower install angular-ui          # install a dependency for your project from Bower
+    $ bower install angular-ui-router   # izzad suggest pakai angular-ui-router
+    $ grunt test                        # test your app
 ```
 Untuk jebat/c9.io kena tukar server ip dengan port. Dalam Gruntfile.js edit
 ```js

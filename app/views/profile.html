@@ -1,0 +1,146 @@
+<div class="container-fluid">
+	<h3>Nanny Profile</h3>
+	<form novalidate class="simple-form" name='FormPersonalInfo'>
+		<div class="row">
+			<div class="col-sm-2"><label form='name' form='FormPersonalInfo'>Name</label></div>
+			<div class="col-sm-4"><input type="text" form="FormPersonalInfo" ng-model="nannyProfile.form.name" /></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="email" form="FormPersonalInfo">E-mail</label></div>
+			<div class="col-sm-4"><input type="email" form="FormPersonalInfo" ng-model="nannyProfile.form.email" /></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="age" form="FormPersonalInfo">Age</label></div>
+			<div class="col-sm-4"><input type="number" min='0' form="FormPersonalInfo" ng-model="nannyProfile.form.age" /></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="gender" form="FormPersonalInfo">Gender</label></div>
+			<div class="col-sm-4">
+				<select form="FormPersonalInfo" ng-model="nannyProfile.form.gender">
+			  		<option value="female" selected>Female</option>
+			  		<option value="male">Male</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="race" form="FormPersonalInfo">Race</label></div>
+			<div class="col-sm-4">
+				<select form="FormPersonalInfo" ng-model="nannyProfile.form.race">
+			  		<option value="malay" selected>Malay</option>
+			  		<option value="chinese">Chinese</option>
+			  		<option value="Indian">Indian</option>
+			  		<option value="Others">Others</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="address" form="FormPersonalInfo">Address</label></div>
+			<div class="col-sm-4"><textarea rows='4' cols='50' form="FormPersonalInfo" ng-model="nannyProfile.form.address" /></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">
+				<label for="mobile" form="FormPersonalInfo">Mobile Number</label>
+			</div>
+			<div class="col-sm-4"><input type="mobile" ng-model="nannyProfile.form.mobile" /> will be use for verification</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="agePreference" form="FormPersonalInfo">Age group Preference</label></div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">Minimum Age</div>
+			<div class="col-sm-3"><input type="range" min="0" max="144" name="minAge" list='listage' ng-model="nannyProfile.form.minAge"></div>
+			<div class="col-sm-1">
+				<label>{{nannyProfile.form.minAge<12?nannyProfile.form.minAge + " Months":((nannyProfile.form.minAge/12)| number:0) + " Years" }}</label>
+				<datalist id="listage">
+					<option value="0">New Born</option>
+					<option value="1">1 Month</option>
+					<option value="2">2 Months</option>
+					<option value="3">3 Months</option>
+					<option value="4">4 Months</option>
+					<option value="5">5 Months</option>
+					<option value="6">6 Months</option>
+					<option value="7">7 Months</option>
+					<option value="8">8 Months</option>
+					<option value="9">9 Months</option>
+					<option value="10">10 Months</option>
+					<option value="11">11 Months</option>
+					<option value="12">1 Year</option>
+					<option value="24">2 Years</option>
+					<option value="36">3 Years</option>
+					<option value="48">4 Years</option>
+					<option value="60">5 Years</option>
+					<option value="72">6 Years</option>
+					<option value="84">7 Years</option>
+					<option value="96">8 Years</option>
+					<option value="108">9 Years</option>
+					<option value="120">10 Years</option>
+					<option value="132">11 Years</option>
+					<option value="144">12 Years</option>
+				</datalist>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">Maximum Age</div>
+			<div class="col-sm-3"><input type="range" min="0" max="144" name="maxAge" list='listage' ng-model="nannyProfile.form.maxAge"></div>
+			<div class="col-sm-1">
+				<label>{{nannyProfile.form.maxAge<12?nannyProfile.form.maxAge + " Months":((nannyProfile.form.maxAge/12)| number:0) + " Years" }}</label>
+				<!-- Datalist ruse form above #listage -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="genderPreference" form="FormPersonalInfo">Gender Preference</label></div>
+			<div class="col-sm-4">
+				<select ng-model="nannyProfile.form.genderPreference">
+					<option value="both" selected>Boys/Girls</option>
+			  		<option value="boy">Boys Only</option>
+			  		<option value="girl">Girls Only</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="spokenLanguage" form="FormPersonalInfo">Spoken Language</label></div>
+			<div class="col-sm-4">
+				<div class="row">
+					<div class="col-sm-4"><input type="checkbox" name='malay' value='malay' ng-model="nannyProfile.form.language['malay']"> Malay</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4"><input type="checkbox" name='mandarin' value='mandarin' ng-model="nannyProfile.form.language['mandarin']"> Mandarin</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4"><input type="checkbox" name='tamil' value='tamil' ng-model="nannyProfile.form.language['tamil']"> Tamil</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4"><input type="checkbox" name='english' value='english' ng-model="nannyProfile.form.language['english']"> English</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4"><input type="checkbox" name='others' value='others' ng-model="nannyProfile.form.language['others']"> Others</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2"><label for="numberOfBabiesInCare" form="FormPersonalInfo">Number of babies/kids currently in care</label></div>
+			<div class="col-sm-4"><input type="number" min='0' form="FormPersonalInfo" ng-model="nannyProfile.form.currentlyCare" /></div>
+		</div>
+    	<div class="row">
+    		<div class="col-sm-2"><label for="price" form="FormPersonalInfo">Price (RM)</label></div>
+    		<div class="col-sm-4"><input type="price" ng-model="nannyProfile.form.price" />
+    			<select name="" id="">
+    				<option value="">per Hour</option>
+    				<option value="">per Day</option>
+    				<option value="">per Month</option>
+    			</select>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col-sm-2"><label for="experience" form="FormPersonalInfo">Experience</label></div>
+    		<div class="col-sm-4"><textarea rows='4' cols='50' ng-model="nannyProfile.form.experience"></textarea></div>
+    	</div>
+    	<div class="row">
+    		<div class="col-sm-2"><label for="describeYourself" form="FormPersonalInfo">Describe Yourself</label></div>
+    		<div class="col-sm-4"><textarea rows='4' cols='50' ng-model="nannyProfile.form.description"></textarea></div>
+    	</div>
+    	<div class="row">
+    		<div class="col-sm-6"><input type="submit" ng-click="nannyProfile.submit()" value="Save" /></div>
+    	</div>
+    </form>
+</div>

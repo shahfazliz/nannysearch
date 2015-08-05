@@ -8,10 +8,22 @@
  * Controller of the workspaceApp
  */
 angular.module('nannyApp')
-  .controller('activationUserCtrl', ['$scope','$stateParams', function ($scope,$stateParams) {
-  	    var activationUser = this;
-
-  	    activationUser.email = $stateParams.email;
-  	    activationUser.number = $stateParams.number;
-  		console.log('Activation argument',$stateParams);
-}]);  	
+    // Added 'numberGenerator' from Factory
+    .controller('activationUserCtrl', ['$scope','$state','userModel','numberGenerator', function ($scope,$state,userModel,numberGenerator) {
+        var activationUser = this;
+        
+        activationUser.id       = userModel.id;
+  	    activationUser.email    = userModel.email;
+  	    activationUser.number   = userModel.number;
+  	    
+  		activationUser.submit = function(){
+  		    if(numberGenerator.testKey(activationUser.form.code)){
+  		        // set fairebase user true
+  		        // reroute to nanny form
+  		        $state.go('profile');
+            }
+            else{
+  		        alert('Sorry, wrong activation key');
+  		    }
+  		}
+    }]);  	

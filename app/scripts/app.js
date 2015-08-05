@@ -22,7 +22,7 @@ angular
     'firebase'
   ])
   .config(function ($stateProvider, $urlRouterProvider,uiGmapGoogleMapApiProvider) {
-    // $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/");
 
     $stateProvider
     .state('main', {
@@ -43,23 +43,19 @@ angular
        templateUrl:"views/signup.html",
        controller: "userSignUpCtrl",
        controllerAs: "userSignUp"
-
     })
     .state('activate',{
        url: "/activate/:id/:email",
        templateUrl:"views/activate.html",
        controller: "activationUserCtrl",
-       controllerAs: "activationUser",
-       params: {'number':null}
-
+       controllerAs: "activationUser"
     })
-    .state('state1', {
-      url: "/state1",
-      templateUrl: "views/about.html",
-      controller: "RegisterNannyCtrl",
-      controllerAs: "registerNanny"
+    .state('profile', {
+      url: "/profile/:id",
+      templateUrl: "views/profile.html",
+      controller: "nannyProfileCtrl",
+      controllerAs: "nannyProfile"
     });
-
     uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',
         v: '3.17',
