@@ -64,6 +64,8 @@ angular.module('nannyApp')
 		}
 
 		this.loginUser = function(email,password,callback){
+			var thisParent = this;
+
 			ref.authWithPassword({
 			  email    : email,
 			  password : password
@@ -72,7 +74,10 @@ angular.module('nannyApp')
 			    console.log("Login Failed!", error);
 			  } else {
 			    $rootScope.global.user = {
-			    	'user': email
+			    	'user': thisParent.email,
+			    	'mobile': thisParent.mobile,
+			    	'uid': thisParent.uid
+
 			    }
 			    console.log("Authenticated successfully with payload:", authData);
 			    console.log("rootScope.global", $rootScope.global);
