@@ -5,7 +5,7 @@
 	last update: 05/08/2015
 */
 angular.module('nannyApp')
-	.service('userModel',	['$firebaseAuth', '$firebaseArray', function($firebaseAuth, $firebaseArray){
+	.service('userModel',	['$firebaseAuth', '$firebaseArray','$rootScope', function($firebaseAuth, $firebaseArray,$rootScope){
 		this.uid;
 		this.mobile;
 		this.email;
@@ -42,6 +42,24 @@ angular.module('nannyApp')
 						});
 					}
 				});
+		}
+
+
+		this.loginUser = function(email,password,callback){
+			ref.authWithPassword({
+			  email    : email,
+			  password : password
+			}, function(error, authData) {
+			  if (error) {
+			    console.log("Login Failed!", error);
+			  } else {
+			    $rootScope.global.user = {
+			    	'user': email
+			    }
+			    console.log("Authenticated successfully with payload:", authData);
+			    console.log("rootScope.global", $rootScope.global);
+			  }
+			});
 		}
         
         this.name;
