@@ -37,7 +37,7 @@ angular.module('nannyApp')
                 case true:
                     userModel.createUser(userParams, function(ref){
                         gsmcommunication.sendSMS(userSignUpCtrl.form.mobile,'Your activation code is: ' + numberGenerator.generatedKey);
-                        $state.go('activate');
+                        $state.go('activate', {'id':ref.key()});
                     });
                     break;
                 case false:

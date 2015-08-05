@@ -9,9 +9,28 @@ angular.module('nannyApp')
 		this.uid;
 		this.mobile;
 		this.email;
+		this.name;
+		this.age;
+		this.gender;
+		this.race;
+		this.address;
+		this.minAge;
+		this.maxAge;
+		this.genderPreference;
+		this.language;
+		this.currentlyInCare;
+		this.price;
+		this.priceUnit;
+		this.experience;
+		this.description;
 		
 		var ref 	= new Firebase("https://blazing-inferno-1310.firebaseio.com");
         var usrsDb 	= new Firebase("https://blazing-inferno-1310.firebaseio.com/users");
+        var user;
+        
+        this.init = function(stringId){
+        	user = new Firebase("https://blazing-inferno-1310.firebaseio.com/users/"+stringId);
+        };
         
         this.createUser = function(array, callback){
         	var thisParent = this;
@@ -31,9 +50,9 @@ angular.module('nannyApp')
 						
 						var usrs = $firebaseArray(usrsDb);
 						usrs.$add({
-							userId: 	userData.uid,  
-							userEmail: 	array.email,
-							userMobile: array.mobile,
+							uid: 	userData.uid,  
+							email: 	array.email,
+							mobile: array.mobile,
 							userActive: 0
 						}).then(function(ref){
 							callback(ref);	
@@ -43,7 +62,6 @@ angular.module('nannyApp')
 					}
 				});
 		}
-
 
 		this.loginUser = function(email,password,callback){
 			ref.authWithPassword({
@@ -61,18 +79,17 @@ angular.module('nannyApp')
 			  }
 			});
 		}
-        
-        this.name;
-		this.age;
-		this.gender;
-		this.race;
-		this.address;
-		this.minAge;
-		this.maxAge;
-		this.genderPreference;
-		this.language;
-		this.currentlyInCare;
-		this.price;
-		this.experience;
-		this.description;
+       
+		this.updateDatabase = function(id){
+			if(user == null){
+				this.init(id);
+			}
+			
+			$firebaseArray(user)
+				.update(this, function(error){
+					if(error){
+						console.log('error', error);	
+					} 
+			});
+		}
 	}]);

@@ -7,7 +7,7 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-2"><label for="email" form="FormPersonalInfo">E-mail</label></div>
-			<div class="col-sm-4"><input type="email" form="FormPersonalInfo" ng-model="nannyProfile.form.email" /></div>
+			<div class="col-sm-4"><input disabled type="email" form="FormPersonalInfo" ng-model="nannyProfile.form.email" /></div>
 		</div>
 		<div class="row">
 			<div class="col-sm-2"><label for="age" form="FormPersonalInfo">Age</label></div>
@@ -28,8 +28,8 @@
 				<select form="FormPersonalInfo" ng-model="nannyProfile.form.race">
 			  		<option value="malay" selected>Malay</option>
 			  		<option value="chinese">Chinese</option>
-			  		<option value="Indian">Indian</option>
-			  		<option value="Others">Others</option>
+			  		<option value="indian">Indian</option>
+			  		<option value="others">Others</option>
 				</select>
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 			<div class="col-sm-2">
 				<label for="mobile" form="FormPersonalInfo">Mobile Number</label>
 			</div>
-			<div class="col-sm-4"><input type="mobile" ng-model="nannyProfile.form.mobile" /> will be use for verification</div>
+			<div class="col-sm-4"><input disabled type="text" ng-model="nannyProfile.form.mobile" /></div>
 		</div>
 		<div class="row">
 			<div class="col-sm-2"><label for="agePreference" form="FormPersonalInfo">Age group Preference</label></div>
@@ -124,10 +124,10 @@
     	<div class="row">
     		<div class="col-sm-2"><label for="price" form="FormPersonalInfo">Price (RM)</label></div>
     		<div class="col-sm-4"><input type="price" ng-model="nannyProfile.form.price" />
-    			<select name="" id="">
-    				<option value="">per Hour</option>
-    				<option value="">per Day</option>
-    				<option value="">per Month</option>
+    			<select form="FormPersonalInfo" ng-model="nannyProfile.form.priceUnit">
+    				<option value="perhour">per Hour</option>
+    				<option value="perday">per Day</option>
+    				<option value="permonth">per Month</option>
     			</select>
     		</div>
     	</div>
