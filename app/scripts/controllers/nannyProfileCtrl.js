@@ -8,35 +8,30 @@
  * Controller of the workspaceApp
  */
 angular.module('nannyApp')
-    .controller('nannyProfileCtrl', ['$scope','$stateParams','userModel', function($scope,$stateParams,userModel){
+    .controller('nannyProfileCtrl', ['$http','$scope','$state','$stateParams','userModel', function($http,$scope,$state,$stateParams,userModel){
         var nannyProfile = this;
-    
-        nannyProfile.form           = userModel.init($stateParams.id);
-        // nannyProfile.form.mobile    = userModel.mobile;
-        // nannyProfile.form.email     = userModel.email;
+        nannyProfile.form = userModel;
         
-        // create submit function
-        // save to userModel and firebase
-        // create login and authentication
-        // cleanup navigation
+        // Initialize userModel data
+        $http.get('https://blazing-inferno-1310.firebaseio.com/users/' + $stateParams.id + '.json')
+    	.then(function(response){
+    	    userModel.id = $stateParams.id;
+    		for(var key in response.data){
+    			userModel[key] = response.data[key];
+    			nannyProfile.form[key] = userModel[key];
+    		}
+    	});
+    	
+    	// Bind nannyProfile.form properties to userModel
+    	for(var key in nannyProfile.form){
+    	    userModel[key] = nannyProfile.form[key];
+    	}
         
+        // Submit function with callback when sucess
         nannyProfile.submit = function(){
-            userModel.mobile            = nannyProfile.form.mobile;
-            userModel.email             = nannyProfile.form.email;
-            userModel.name              = nannyProfile.form.name;
-            userModel.age               = nannyProfile.form.age;
-            userModel.gender            = nannyProfile.form.gender;
-            userModel.race              = nannyProfile.form.race;
-            userModel.address           = nannyProfile.form.address;
-            userModel.minAge            = nannyProfile.form.minAge;
-            userModel.maxAge            = nannyProfile.form.maxAge;
-            userModel.genderPreference  = nannyProfile.form.genderPreference;
-            userModel.language          = nannyProfile.form.language;
-            userModel.currentlyInCare   = nannyProfile.form.currentlyInCare;
-            userModel.price             = nannyProfile.form.price;
-            userModel.priceUnit         = nannyProfile.form.priceUnit;
-            userModel.experience        = nannyProfile.form.experience;
-            userModel.description       = nannyProfile.form.description;
-            userModel.updateDatabase();
+            userModel.updateDatabase(function(){
+                alert('Profile Updated');
+                $state.go('main');
+            });
         };
     }]);
