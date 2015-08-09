@@ -7,7 +7,7 @@
  * Controller of the workspaceApp
  */
 angular.module('nannyApp')
-    .controller('userSignUpCtrl', ['$scope','$state', 'userModel', 'gsmcommunication', 'numberGenerator', function($scope,$state,userModel,gsmcommunication,numberGenerator){
+    .controller('userSignUpCtrl', ['$scope','$state', 'userModel', 'gsmcommunication', 'numberGenerator', '$rootScope', '$cookies', function($scope,$state,userModel,gsmcommunication,numberGenerator,$rootScope, $cookies){
         //form needed validation, needed to add validation
         var userSignUpCtrl = this;
         userSignUpCtrl.form = {};
@@ -29,8 +29,22 @@ angular.module('nannyApp')
             switch(userSignUpCtrl.form.password === userSignUpCtrl.form.password2){
                 case true:
                     userModel.createUser(userParams, function(ref){
-                        gsmcommunication.sendSMS(userSignUpCtrl.form.mobile,'Your activation code is: ' + numberGenerator.generatedKey);
-                        $state.go('activate', {'id':ref.key()});
+                        // gsmcommunication.sendSMS(userSignUpCtrl.form.mobile,'Your activation code is: ' + numberGenerator.generatedKey);
+                        console.log('create user ref',ref);
+                        userModel.loginUser(userParams, function(uid){
+                            // console.log('go to activate',uid);
+                            var usrLoggedIn = {
+                                'uid '    : uid,
+                                'email'   : userSignUpCtrl.form.email,
+                                'mobile'  : userSignUpCtrl.form.mobile
+                            };
+
+                            $rootScope.global = usrLoggedIn;
+                            $cookies.putObject('user',usrLoggedIn);
+                            gsmcommunication.sendSMS(userSignUpCtrl.form.mobile,'Your activation code is: ' + numberGenerator.generatedKey);
+                            $state.go('activate', {'id':ref, 'mobile': userSignUpCtrl.form.mobile});
+                        });
+                        
                     });
                     break;
                 case false:

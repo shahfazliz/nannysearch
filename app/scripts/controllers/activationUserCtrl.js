@@ -14,6 +14,7 @@ angular.module('nannyApp')
         
         activationUser.email    = userModel.email;
   	    activationUser.number   = userModel.number;
+        activationUser.mobile = $stateParams.mobile;
   	    
   		activationUser.submit = function(){
   		    switch(numberGenerator.testKey(activationUser.form.code)){

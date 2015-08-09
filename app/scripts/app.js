@@ -19,7 +19,8 @@ angular
     'ngTouch',
     'uiGmapgoogle-maps',
     'geolocation',
-    'firebase'
+    'firebase',
+    'ngCookies'
   ])
   .config(function ($stateProvider, $urlRouterProvider,uiGmapGoogleMapApiProvider) {
     $urlRouterProvider.otherwise("/");
@@ -38,6 +39,12 @@ angular
       }
 
     })
+    .state('logout',{
+      url: "/logout",
+      template: " ",
+      controller: "userLogoutCtrl",
+      controllerAs: "userLogout"
+    })
     .state('signup',{
        url: "/signup",
        templateUrl:"views/signup.html",
@@ -48,7 +55,10 @@ angular
        url: "/activate/:id",
        templateUrl:"views/activate.html",
        controller: "activationUserCtrl",
-       controllerAs: "activationUser"
+       controllerAs: "activationUser",
+       params: {
+         mobile: ''
+       }
     })
     .state('profile', {
       url: "/profile/:id",
