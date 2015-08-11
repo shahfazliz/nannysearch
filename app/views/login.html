@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <h3>Login</h3>
+    <form class="simple-form">
+        <div class="row">
+            <div class="col-sm-2"><label>Email</label></div>
+            <div class="col-sm-3"><input type="email" name="email" ng-model='userLogin.email'/></div>
+            <div class="col-sm-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2"><label>Password</label></div>
+            <div class="col-sm-3"><input type="password" name="password" ng-model='userLogin.password'/></div>
+            <div class="col-sm-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2"><button ng-click='userLogin.submit()' value='save'>Login</button></div>
+        </div>
+    </form>
+</div>

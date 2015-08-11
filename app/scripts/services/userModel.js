@@ -50,7 +50,7 @@ angular.module('nannyApp')
 					var uid = str.substring(str.lastIndexOf(":")+1);	
 					callback(uid);
 				}
-			})
+			});
 			// r password : password
 			// }ef.authWithPassword({
 			//   email    : email,

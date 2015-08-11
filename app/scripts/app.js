@@ -39,6 +39,11 @@ angular
       }
 
     })
+    .state('login',{
+      url:'/login',
+      templateUrl:'views/login.html',
+      controller:'userLoginCtrl'
+    })
     .state('logout',{
       url: "/logout",
       template: " ",
