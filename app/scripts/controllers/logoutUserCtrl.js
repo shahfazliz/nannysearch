@@ -10,6 +10,7 @@
 angular.module('nannyApp')
     .controller('userLogoutCtrl', ['$cookies', '$rootScope', function($cookies,$rootScope){
         $cookies.remove('user');
+        $rootScope.isLoggedIn = false;
         if($rootScope.global){
             delete $rootScope.global;
         }

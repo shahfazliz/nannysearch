@@ -1,15 +1,23 @@
-'use sctrict';
+'use strict';
 angular.module('nannyApp')
-    .controller('userLoginCtrl',['$scope','$state','userModel',function($scope,$state,userModel){
-        var userLogin = this;
-        
-        userLogin.submit = function(){
-            alert(userLogin.email);
-            userModel.loginUser({
-                email       : userLogin.email,
-                password    : userLogin.password
-            },function(){
-                $state.go('main');
-            });
-        };
-    }]);
+.controller('userLoginCtrl',['$scope','$rootScope','$cookies','$state','userModel',function($scope,$rootScope,$cookies,$state,userModel){
+    $scope.userLogin = this;
+    
+    $scope.userLogin.submit = function(){
+        userModel.loginUser({
+            email       : $scope.userLogin.email,
+            password    : $scope.userLogin.password
+        },function(id){
+            var usrLoggedIn = {
+                'uid '    : id,
+                'email'   : $scope.userLogin.email
+            };
+            
+            $rootScope.isLoggedIn = true;
+            $rootScope.global = usrLoggedIn;
+            $cookies.putObject('user',usrLoggedIn);
+            
+            $state.go('profile',{'id':id});
+        });
+    };
+}]);

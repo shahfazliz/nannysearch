@@ -45,7 +45,7 @@ angular.module('nannyApp')
 					console.log(error);
 				}
 				else
-				{	
+				{
 					var str = authData.uid;
 					var uid = str.substring(str.lastIndexOf(":")+1);	
 					callback(uid);

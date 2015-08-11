@@ -76,4 +76,13 @@ angular
         v: '3.17',
         libraries: 'weather,geometry,visualization'
     });
-  });
+  })
+  .run(['$rootScope','$cookieStore',function($rootScope,$cookieStore){
+    var user = $cookieStore.get('user');
+    if(user){
+      alert(user);
+      $rootScope.isLoggedIn = true;
+    }
+    else
+      $rootScope.isLoggedIn = false;
+  }]);
